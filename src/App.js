@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
-import HomePage from './pages/homepage/HomePage';
-import ShopPage from './pages/shop/ShopPage';
+import HomePage from './pages/Homepage/HomePage';
+import ShopPage from './pages/Shop/ShopPage';
 import SignInSignUp from './pages/SignInSignUp/SignInSignUp'
 import { Route, Switch } from 'react-router-dom'
 import Header from './components/Header/Header';

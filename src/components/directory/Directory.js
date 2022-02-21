@@ -1,6 +1,6 @@
 import React from 'react'
 import './Directory.styles.scss'
-import MenuItems from '../menu-items/MenuItems'
+import MenuItems from '../Menu-items/MenuItems'
 const sections = [
     {
         title: 'hats',

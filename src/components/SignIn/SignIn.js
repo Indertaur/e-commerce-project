@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Button from '../Button/Button'
-import { signInWithGoogle } from '../../Firebase/Firebase.utils'
+import { signInWithGoogle } from '../../firebase/Firebase.utils'
 import FormInput from '../FormInput/FormInput'
 import './SignIn.styles.scss'
 
@@ -30,7 +30,7 @@ const SignIn = () => {
         <FormInput name="password" type="password" value={password} label="Password" handleChange={handleChange} required />
         <div className="buttons">
           <Button type="submit"> Sign In </Button>
-          <Button onClick={signInWithGoogle}> Sign In with Google</Button>
+          <Button onClick={signInWithGoogle}> Sign in With Google </Button>
         </div>
       </form>
     </>
