@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from '../Button/Button'
 import { signInWithGoogle } from '../../firebase/Firebase.utils'
 import FormInput from '../FormInput/FormInput'
@@ -6,34 +6,41 @@ import './SignIn.styles.scss'
 
 const SignIn = () => {
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [authFormData, setAuthFormData] = useState({email:'',password:'',});
 
   const handleChange = (e) => {
-    setEmail(e.target.value)
-    setPassword(e.target.value)
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setAuthFormData({
+      ...authFormData,
+      [name]: value
+    })
+    
   }
 
+  useEffect(() => {
+    console.log(authFormData)
+  }, [authFormData]);
+
   const formSubmitHandler = (e) => {
-    console.log(email)
-    console.log(password)
+    // console.log(email)
+    // console.log(password)
     e.preventDefault()
-    setEmail('')
-    setPassword('')
   }
   return (
-    <>
-      <div className="title"> I already have a account </div>
-      <div className="title"> Sign In </div>
+    <div className="sign-in">
+      <h2> Already have a account ? </h2>
+      <span> Sign In With your Email and Password </span>
       <form onSubmit={formSubmitHandler} className="sign-in">
-        <FormInput name="email" type="email" value={email} label="Email" handleChange={handleChange} required />
-        <FormInput name="password" type="password" value={password} label="Password" handleChange={handleChange} required />
+        <FormInput name="email" type="email" value={authFormData?.email} label="Email" handleChange={handleChange} required />
+        <FormInput name="password" type="password" value={authFormData?.password} label="Password" handleChange={handleChange} required />
         <div className="buttons">
-          <Button type="submit"> Sign In </Button>
-          <Button onClick={signInWithGoogle}> Sign in With Google </Button>
+          <Button type="button"> Sign In </Button>
+          <Button onClick={signInWithGoogle} isGoogleSignIn> Sign in With Google </Button>
         </div>
       </form>
-    </>
+    </div>
   )
 }
 export default SignIn
